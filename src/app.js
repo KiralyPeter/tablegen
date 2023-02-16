@@ -13,6 +13,22 @@ const tbody = document.querySelector("#tbody");
 function generateTbody(){
     gyumolcsok.forEach( (gyumolcs) => {
         console.log(gyumolcs);
+
+        let tr = document.createElement("tr");
+        let tdName = document.createElement("td");
+        let tdQuantity = document.createElement("td");
+        let tdPrice = document.createElement("td");
+
+        tdName.textContent = gyumolcs.name;
+        tdQuantity.textContent = gyumolcs.quantity;
+        tdPrice.textContent = gyumolcs.price;
+
+        tbody.append(tr);
+        tr.append(tdName);
+        tr.append(tdQuantity);
+        tr.append(tdPrice);
+
+
     });
 }
 
