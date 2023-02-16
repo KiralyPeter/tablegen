@@ -1,10 +1,10 @@
-// const { Button } = require("bootstrap");
+// const { Button } = require("bootstrap"); Ezt a VSCode rakta ide...
 
 const gyumolcsok = [
-    { name: 'szilva', quantity: 35, price: 8 },
-    { name: 'alma', quantity: 45, price: 8.3 },
-    { name: 'körte', quantity: 25, price: 9.5 },
-    { name: 'barack', quantity: 37, price: 12 }
+    { id: 1, name: 'szilva', quantity: 35, price: 8 },
+    { id: 2, name: 'alma', quantity: 45, price: 8.3 },
+    { id: 3, name: 'körte', quantity: 25, price: 9.5 },
+    { id: 4, name: 'barack', quantity: 37, price: 12 }
 ];
 
 const tbody = document.querySelector("#tbody");
@@ -28,7 +28,7 @@ function generateTbody(){
         tr.append(tdName);
         tr.append(tdQuantity);
         tr.append(tdPrice);
-        tr.append(generateTdDeleteButton());
+        tr.append(generateTdDeleteButton(gyumolcs.id));
 
 
     });
@@ -36,11 +36,28 @@ function generateTbody(){
 
 generateTbody();
 
-function generateTdDeleteButton() {
+function generateTdDeleteButton(id) {
     let td = document.createElement("td");
     let button = document.createElement("button");
     button.textContent = "Törlés";
     button.classList = "btn btn-warning";
+    button.addEventListener("click", () => {
+        console.log(id);
+        let index = 0;
+        let count = 0;
+        gyumolcsok.forEach( (gy) => {
+            if (gy.id == id) {
+                index = count;
+            }
+            count++;
+                
+        });
+        console.log(index);
+        gyumolcsok.splice(index, 1);
+        tbody.textContent = "";
+        generateTbody();
+
+    });
     td.append(button);
     return td;
 }
