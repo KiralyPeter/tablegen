@@ -1,5 +1,14 @@
 // const { Button } = require("bootstrap"); Ezt a VSCode rakta ide...
 
+// adatok bekötése index.html-ből:
+
+const tbody = document.querySelector("#tbody");
+const saveButton = document.querySelector("#saveButton")
+
+const nameInput = document.querySelector("#name");
+const quantityInput = document.querySelector("#quantity");
+const priveInput = document.querySelector("#price");
+
 const gyumolcsok = [
     { id: 1, name: 'szilva', quantity: 35, price: 8 },
     { id: 2, name: 'alma', quantity: 45, price: 8.3 },
@@ -7,7 +16,7 @@ const gyumolcsok = [
     { id: 4, name: 'barack', quantity: 37, price: 12 }
 ];
 
-const tbody = document.querySelector("#tbody");
+
 
 // oldal betöltődésre induljon a generálás...
 
@@ -61,3 +70,22 @@ function generateTdDeleteButton(id) {
     td.append(button);
     return td;
 }
+
+saveButton.addEventListener("click", () => {
+    // console.log("Működik");
+    let name = nameInput.value;
+    let quantity = quantityInput.value;
+    let price = priveInput.value;
+
+    let gyumolcs = {
+        name: name, 
+        quantity: quantity, 
+        price: price
+    };
+
+    gyumolcsok.push(gyumolcs); // ezmiez? - listához hozzáadás..
+    console.log(gyumolcsok);
+
+    tbody.textContent = ""; // üresre töröljük..
+    generateTbody(); // újrta futtatjuk a tábla generálást
+})
