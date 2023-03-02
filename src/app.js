@@ -14,6 +14,8 @@ const editIdName = document.querySelector("#editName");
 const editIdQuantity = document.querySelector("#editQuantity");
 const editIdPrice = document.querySelector("#editPrice");
 
+const saveEditButton = document.querySelector("#saveEditButton");
+
 const gyumolcsok = [
     { id: 1, name: 'szilva', quantity: 35, price: 8 },
     { id: 2, name: 'alma', quantity: 45, price: 8.3 },
@@ -123,6 +125,31 @@ saveButton.addEventListener("click", () => {
     generateTbody(); // újrta futtatjuk a tábla generálást
     clearFieldOnAddModal();
 })
+
+saveEditButton.addEventListener("click", () => {
+    // console.log("saveEditButton Működik");
+
+    let id = editIdInput.value;
+    let name = editIdName.value;
+    let quantity = editIdQuantity.value;
+    let price = editIdPrice.value;
+
+    // console.log("név: ", name);
+
+    gyumolcsok.forEach( (gyumolcs) => {
+        // console.log(gyumolcs.nev);
+        // ha egyelő az ID, akkor azt meg kell változtatni...
+        if (gyumolcs.id == id) {
+            gyumolcs.name = name;
+            gyumolcs.quantity = quantity;
+            gyumolcs.price = price;
+        }
+    } );
+    tbody.textContent = ""; // üresre töröljük..
+    generateTbody(); // újrta futtatjuk a tábla generálást
+
+});
+
 
 function clearFieldOnAddModal(){
     nameInput.value = "";
