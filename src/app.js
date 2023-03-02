@@ -88,4 +88,11 @@ saveButton.addEventListener("click", () => {
 
     tbody.textContent = ""; // üresre töröljük..
     generateTbody(); // újrta futtatjuk a tábla generálást
+    clearFieldOnAddModal();
 })
+
+function clearFieldOnAddModal(){
+    nameInput.value = "";
+    quantityInput.value = "";
+    priveInput.value = "";
+}
