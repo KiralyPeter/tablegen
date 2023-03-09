@@ -35,6 +35,12 @@
       "quantity": "22",
       "price": "22",
       "id": 6
+    },
+    {
+      "name": "banán",
+      "quantity": "15",
+      "price": "20",
+      "id": 7
     }
   ]
 }

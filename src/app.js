@@ -161,10 +161,11 @@ saveButton.addEventListener("click", () => {
     createFruit(gyumolcs);
 
     // gyumolcsok.push(gyumolcs); // ezmiez? - listához hozzáadás..
-    console.log(gyumolcsok);
+    // console.log(gyumolcsok);
 
+    getFruits();
     tbody.textContent = ""; // üresre töröljük..
-    generateTbody(); // újrta futtatjuk a tábla generálást
+    // generateTbody(); // újrta futtatjuk a tábla generálást
     clearFieldOnAddModal();
 })
 
