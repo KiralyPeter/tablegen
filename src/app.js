@@ -47,6 +47,7 @@ getFruits();
 
 // oldal betöltődésre induljon a generálás...
 
+// dolgozatra kell...
 function generateTbody(){
     gyumolcsok.forEach( (gyumolcs) => {
         console.log(gyumolcs);
@@ -64,6 +65,8 @@ function generateTbody(){
         tr.append(tdName);
         tr.append(tdQuantity);
         tr.append(tdPrice);
+
+        // ezek nem kellenek majd a dolgozatra...
         tr.append(generateTdDeleteButton(gyumolcs.id));
         tr.append(generateTdEditButton(gyumolcs));
 
@@ -126,6 +129,23 @@ function generateTdEditButton(fruit) {
     return td;
 }
 
+function createFruit(fruit){
+    let endpoint = "fruits";
+    url = host + endpoint;
+
+    fetch(url, {
+        method: "post",
+        body: JSON.stringify(fruit), // stringesít, idéző jelbe teszi
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+    }); // ha a fetch sikeresen lefut...
+}
+
 saveButton.addEventListener("click", () => {
     // console.log("Működik");
     let name = nameInput.value;
@@ -138,7 +158,9 @@ saveButton.addEventListener("click", () => {
         price: price
     };
 
-    gyumolcsok.push(gyumolcs); // ezmiez? - listához hozzáadás..
+    createFruit(gyumolcs);
+
+    // gyumolcsok.push(gyumolcs); // ezmiez? - listához hozzáadás..
     console.log(gyumolcsok);
 
     tbody.textContent = ""; // üresre töröljük..
