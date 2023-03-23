@@ -24,8 +24,9 @@ const saveEditButton = document.querySelector("#saveEditButton");
 // ];
 
 var gyumolcsok = [];
-const host = "http://localhost:3000/";
+const host = "http://localhost:8000/";
 // IPV6-os cím, ha nem működne a fenti: [::1]:3000
+// átírtuk 3000-re 2023-03-23
 
 function getFruits(){
     let enpoint = "fruits";
@@ -83,19 +84,20 @@ function generateTdDeleteButton(id) {
     button.classList = "btn btn-warning";
     button.addEventListener("click", () => {
         console.log(id);
-        let index = 0;
-        let count = 0;
-        gyumolcsok.forEach( (gy) => {
-            if (gy.id == id) {
-                index = count;
-            }
-            count++;
+        deleteFruit(id);
+        // let index = 0;
+        // let count = 0;
+        // gyumolcsok.forEach( (gy) => {
+        //     if (gy.id == id) {
+        //         index = count;
+        //     }
+        //     count++;
                 
-        });
-        console.log(index);
-        gyumolcsok.splice(index, 1);
-        tbody.textContent = "";
-        generateTbody();
+        // });
+        // console.log(index);
+        // gyumolcsok.splice(index, 1);
+        // tbody.textContent = "";
+        // generateTbody();
 
     });
     td.append(button);
@@ -144,6 +146,21 @@ function createFruit(fruit){
     .then(result => {
         console.log(result)
     }); // ha a fetch sikeresen lefut...
+}
+
+function deleteFruit(id){
+    let endpoint = "fruits";
+    let url = host + endpoint + "/" + id;
+    fetch(url, {
+        method: "delete"
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log(result);
+        tbody.textContent = "";
+        getFruits();
+    });
+
 }
 
 saveButton.addEventListener("click", () => {

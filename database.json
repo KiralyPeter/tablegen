@@ -7,40 +7,10 @@
       "price": 3
     },
     {
-      "id": 2,
-      "name": "narancs",
-      "quantity": 20,
-      "price": 4
-    },
-    {
-      "id": 3,
       "name": "alma",
-      "quantity": 40,
-      "price": 2
-    },
-    {
-      "name": "szilva",
-      "quantity": 25,
-      "price": 2,
-      "id": 4
-    },
-    {
-      "name": "körte",
-      "quantity": 22,
-      "price": 3,
-      "id": 5
-    },
-    {
-      "name": "44",
-      "quantity": "22",
-      "price": "22",
-      "id": 6
-    },
-    {
-      "name": "banán",
       "quantity": "15",
-      "price": "20",
-      "id": 7
+      "price": "150",
+      "id": 3
     }
   ]
 }
