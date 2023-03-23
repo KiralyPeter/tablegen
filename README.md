@@ -1,2 +1,2 @@
-# Sablon projekt NodeJS-hez
+# Giga-Mega projekt CRUD műveletekhez
 
