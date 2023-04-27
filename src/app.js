@@ -194,6 +194,16 @@ saveEditButton.addEventListener("click", () => {
     let quantity = editIdQuantity.value;
     let price = editIdPrice.value;
 
+    // objektum létrehozása (kulcs: változó):
+    let fruit = {
+        id: id,
+        name: name,
+        quantity: quantity,
+        price: price
+    }
+
+    updateFruit(fruit);
+
     // console.log("név: ", name);
 
     gyumolcsok.forEach( (gyumolcs) => {
@@ -209,6 +219,25 @@ saveEditButton.addEventListener("click", () => {
     generateTbody(); // újrta futtatjuk a tábla generálást
 
 });
+
+function updateFruit(fruit){
+    let endpoint = "fruits";
+    let url = host + endpoint + "/" + fruit.id;
+    let headers = {
+        "Content-Type": "application/json"
+    }
+
+    fetch(url, {
+        method: 'put',
+        // stringesítés (JSON.stringify):
+        body: JSON.stringify(fruit), 
+        headers: headers
+    })
+    .then(res => res.json()) // res = response .. a kér 'res'-nek nincs köze egymáshoz...
+    .then(res => {
+        console.log(res); // res = result
+    });
+}
 
 
 function clearFieldOnAddModal(){
